@@ -1,0 +1,119 @@
+# 1-Week Implementation Strategy Based on Provided Baseline
+
+## Analysis of Existing Structure
+
+**Current Baseline Components:**
+- **main.py**: Basic GCN with simple training loop
+- **baseline.ipynb**: Advanced pipeline with GIN, multiple loss functions, ELR support
+- **loadData.py**: Graph dataset loader for compressed JSON format
+- **src/models.py**: GNN implementations (referenced in notebook)
+
+**Key Requirements from Challenge:**
+- Command-line interface: `python main.py --test_path <path> [--train_path <path>]`
+- Output format: `testset_<foldername>.csv` with columns `id, pred`
+- Checkpoint saving: `model_<foldername>_epoch_<number>.pth` (minimum 5 per model)
+- Folder structure: `checkpoints/`, `source/`, `submission/`, `logs/`
+
+## Improved Strategy: Building on Existing Foundation## 1-Week Team Strategy: Building on Existing Baseline
+
+### Project Structure Analysis
+**Current Assets:**
+- `main.py`: Basic GCN with simple training
+- `baseline.ipynb`: Advanced GIN with ELR, multiple losses
+- `loadData.py`: Graph dataset loader (compatible)
+- Challenge requirements: specific file structure, checkpoint saving, CSV output format
+
+**Key Improvements Needed:**
+1. **Robust losses** (GCE replaces standard CE)
+2. **Ensemble methods** (dual pooling vs single pooling)
+3. **Sample selection** (small-loss criterion)
+4. **Enhanced GIN architecture** (vs basic GCN)
+
+### Task Division & Timeline
+
+#### **Member A: Model Architecture Lead**
+**Days 1-2:**
+- Enhance `main.py` with GIN architecture (upgrade from GCN)
+- Implement dual pooling ensemble (mean + max pooling)
+- Ensure compatibility with existing `loadData.py` and challenge requirements
+
+**Days 3-4:**
+- Integrate ensemble training with learnable weights
+- Add skip connections and batch normalization
+- Test model improvements vs baseline
+
+**Days 5-6:**
+- Hyperparameter optimization
+- Checkpoint management (5+ checkpoints as required)
+- Performance validation
+
+#### **Member B: Loss Functions & Selection Lead**
+**Days 1-2:**
+- Implement GCE loss function (primary robust loss)
+- Create sample selection mechanism (small-loss criterion)
+- Test robust losses vs standard CE
+
+**Days 3-4:**
+- Integrate sample selection with training loop
+- Add noise detection and analysis tools
+- Implement warmup training schedule
+
+**Days 5-6:**
+- Tune selection parameters and noise rates
+- Create logging system for analysis
+- Generate required submission files
+
+### Daily Integration Points
+
+**Day 2 Evening:** Combine enhanced architecture + GCE loss
+**Day 4 Evening:** Integrate full system (ensemble + robust loss + selection)
+**Day 6:** Final testing and submission preparation
+
+### Challenge Compliance Checklist
+
+✅ **File Structure:**
+```
+├── main.py (enhanced with all improvements)
+├── source/
+│   ├── enhanced_models.py (Member A)
+│   ├── robust_losses.py (Member B)
+│   └── loadData.py (existing)
+├── checkpoints/
+│   └── model_<folder>_epoch_<N>.pth (5+ checkpoints)
+├── submission/
+│   └── testset_<folder>.csv (id, pred format)
+├── logs/
+│   └── training.log (every 10 epochs)
+└── requirements.txt
+```
+
+✅ **Command Line Interface:**
+```bash
+python main.py --test_path ./datasets/A/test.json.gz --train_path ./datasets/A/train.json.gz
+```
+
+✅ **Output Format:** CSV with columns `id, pred` (not `GraphID, Class`)
+
+### Implementation Priority
+
+**Week 1 Focus (High Impact, Low Risk):**
+1. **GCE Loss** - Replace standard CE (guaranteed +3-5% improvement)
+2. **Dual Pooling** - Mean + max pooling ensemble (+2-4% improvement)
+3. **Sample Selection** - Small-loss criterion (+3-6% improvement if noisy data)
+
+**Backup Plan:** If complex integration fails, maintain GCE loss only (still significant improvement)
+
+### Expected Performance Gains
+
+- **Baseline GCN + CE:** Starting point
+- **Enhanced GIN + GCE:** +5-8% improvement
+- **Full System:** +8-12% improvement (if dataset has noise)
+
+### Risk Mitigation
+
+1. **Maintain working version** at each integration point
+2. **Test incrementally** - each component should improve performance
+3. **Have backup simple version** (GCE loss only) ready by Day 4
+4. **Use existing `loadData.py`** to avoid compatibility issues
+
+This strategy leverages the existing infrastructure while adding proven noise-robust techniques, maximizing chances of beating the baseline within the 1-week constraint.
