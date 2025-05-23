@@ -1,5 +1,6 @@
-# Ignore all .json files
+# Ignore all .json files except config.json
 *.json
+!config.json
 
 # Ignore all .json.gz files
 *.json.gz
