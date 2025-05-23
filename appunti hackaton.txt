@@ -1,0 +1,30 @@
+Model baseline structure:
+N.B.: The script uses add_zeros to give every node an initial "feature" of 0 (as a long integer). This 0 isn't meant to be a meaningful feature in itself. Instead, it acts as an index for the torch.nn.Embedding layer in the model.
+In the provided baseline, the add_zeros function is used precisely because it's assumed that the input train.json.gz and test.json.gz files might only define the graph structure (nodes and edges) and not provide a rich set of pre-existing features for each node. So, a placeholder feature (0) is assigned to every node.
+
+-	The input x after add_zeros is a tensor of only 0s for all nodes
+-	Embedding layer: torch.nn.Embedding(1, input_dim)
+So, the embedding layer, in this specific configuration (num_embeddings=1), takes the uniform input of zeros and transforms it so that every node in the graph initially receives the exact same, learnable, dense feature vector of size input_dim. The subsequent GCN layers then work to differentiate these nodes based on their structural context.
+-	Graph convolutional network layer GNCConv(input_dim,hidden_dim)
+It takes the node features (that are currently all the same from the embedding) and the graph connectivity (edge_index). For each node it aggregates informations from its direct neighbors (the edge_index) and its own current representation.The result is a new set of node features, each of dimension hidden_dim. Now, nodes will start to have different feature vectors if their local neighborhood structures are different, even though they started identically.
+-	ReLu
+-	Another GCN layer GCNConv(hidden_dim, hidden_dim). By stacking two GCN layers, each node can now incorporate information from its 2-hop neighborhood (neighbors of its neighbors). This allows the model to learn representations based on a slightly larger structural context.
+-	Global_mean_pool . It takes the node features x (output by self.conv2, so each node has a hidden_dim-dimensional vector) and a batch vector. The batch vector indicates which graph each node belongs to (when processing multiple graphs in a batch). For each graph of the batch it computes the element wise average of the feature vectors of all nodes. This outputs a single hidden_dim dimensional vector for each graph
+-	Fully connected layer. For each graph’s vector it outputs 6 scores, each one representing one of the possibleclasses.
+
+
+
+LOSS:
+Per ora loro hanno usato una cross entropy standard e una cross entropy pesata. Quest’ultima scala il risultato della cross entropy standard moltiplicandolo per (1-p) con p = percentuale di sample che presumiamo possano essere noisy.
+
+Idee di Gemini:
+      0)	Graph augmentation techniques:
+-	Node dropping: Randomly remove a small percentage of nodes during training
+-	Edge perturbation: Randomly add or remove a small percentage of edges
+-	Attribute masking: Randomly mask some features
+-	Subgraph sampling: Train on subgraph sampled from the larger training graphs
+
+1)	GIN,GAT,GraphSAGE instead of GCN
+ 
+             
+            
