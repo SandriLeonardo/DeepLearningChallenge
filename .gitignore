@@ -1,0 +1,5 @@
+# Ignore all .json files
+*.json
+
+# Ignore all .json.gz files
+*.json.gz
