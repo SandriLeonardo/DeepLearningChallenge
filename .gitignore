@@ -4,3 +4,6 @@
 
 # Ignore all .json.gz files
 *.json.gz
+
+# Ignore venv
+DeepTest/
