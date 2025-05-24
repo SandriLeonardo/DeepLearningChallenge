@@ -7,3 +7,6 @@
 
 # Ignore venv
 DeepTest/
+
+# Ignore repo hackaton from our repo
+hackaton/
