@@ -33,6 +33,9 @@
 
 #### **Member A: Model Architecture Lead**
 **Days 1-2:**
+- Run baseline.ipynb on dataset to establish baseline performance
+- Document baseline accuracy for each dataset (A, B, C, D)
+- Extract working components from notebook for main.py enhancement
 - Enhance `main.py` with GIN architecture (upgrade from GCN)
 - Implement dual pooling ensemble (mean + max pooling)
 - Ensure compatibility with existing `loadData.py` and challenge requirements
@@ -49,6 +52,9 @@
 
 #### **Member B: Loss Functions & Selection Lead**
 **Days 1-2:**
+- Run baseline with different loss functions in notebook
+- Analyze dataset characteristics using notebook tools
+- Implement GCE loss and compare against baseline CE
 - Implement GCE loss function (primary robust loss)
 - Create sample selection mechanism (small-loss criterion)
 - Test robust losses vs standard CE
