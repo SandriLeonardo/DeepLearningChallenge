@@ -10,3 +10,4 @@ DeepTest/
 
 # Ignore repo hackaton from our repo
 hackaton/
+hackaton/*.pyc
