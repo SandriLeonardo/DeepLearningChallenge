@@ -11,3 +11,6 @@ DeepTest/
 # Ignore repo hackaton from our repo
 hackaton/
 hackaton/*.pyc
+
+# ignore dataset
+processed_data_separate/
