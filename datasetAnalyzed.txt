@@ -1,0 +1,291 @@
+leosa@Ripperdoc MINGW64 /c/Users/leosa/Documents/università/Sapienza/Deep Learning/progetto
+$ "c:/Users/leosa/Documents/università/Sapienza/Deep Learning/progetto/DeepLearningChallenge/DeepTest/Scripts/python.exe" "c:/Users/leosa/Documents/università/Sapienza/Deep Learning/progetto/datasetTesting.py"
+🚀 ANALYZING ALL DATASETS
+✅ Loaded dataset A: Train=10152, Val=1128, Test=2340
+✅ Loaded dataset B: Train=5040, Val=560, Test=1560
+✅ Loaded dataset C: Train=6912, Val=768, Test=1530
+✅ Loaded dataset D: Train=9252, Val=1028, Test=2250
+
+==================================================
+ANALYZING DATASET A
+==================================================
+🚀 STARTING PHASE 1: FOUNDATION TESTING
+=== DATASET ANALYSIS ===
+Total graphs: 10152
+Number of classes: 6
+Node feature dimension: 1
+
+=== LABEL DISTRIBUTION ===
+Class 0: 1228 samples (12.1%)
+Class 1: 1730 samples (17.0%)
+Class 2: 2976 samples (29.3%)
+Class 3: 1782 samples (17.6%)
+Class 4: 1768 samples (17.4%)
+Class 5: 668 samples (6.6%)
+
+=== GRAPH STRUCTURE ===
+Average nodes per graph: 244.7
+Min nodes: 50, Max nodes: 300
+Std deviation: 84.8
+
+=== NODE FEATURES ===
+Feature range: [0.000, 0.000]
+Feature mean: 0.000
+Feature std: 0.000
+
+=== TESTING BASIC FUNCTIONALITY ===
+C:\Users\leosa\Documents\università\Sapienza\Deep Learning\progetto\DeepLearningChallenge\DeepTest\lib\site-packages\torch_geometric\deprecation.py:26: UserWarning: 'data.DataLoader' is deprecated, use 'loader.DataLoader' instead
+  warnings.warn(out)
+✅ Forward pass successful. Output shape: torch.Size([32, 6])
+✅ Loss computation successful. Loss: 1.9359
+✅ Backward pass successful
+Epoch 1/5, Avg Loss: 1.7298
+Epoch 2/5, Avg Loss: 1.7118
+Epoch 3/5, Avg Loss: 1.7106
+Epoch 4/5, Avg Loss: 1.7089
+Epoch 5/5, Avg Loss: 1.7098
+✅ Basic model test accuracy: 0.2949
+'loader.DataLoader' instead
+  warnings.warn(out)
+✅ Forward pass successful. Output shape: torch.Size([32, 6])
+✅ Loss computation successful. Loss: 1.9359
+✅ Backward pass successful
+Epoch 1/5, Avg Loss: 1.7298
+Epoch 2/5, Avg Loss: 1.7118
+Epoch 3/5, Avg Loss: 1.7106
+Epoch 4/5, Avg Loss: 1.7089
+Epoch 5/5, Avg Loss: 1.7098
+'loader.DataLoader' instead
+  warnings.warn(out)
+✅ Forward pass successful. Output shape: torch.Size([32, 6])
+✅ Loss computation successful. Loss: 1.9359
+✅ Backward pass successful
+Epoch 1/5, Avg Loss: 1.7298
+Epoch 2/5, Avg Loss: 1.7118
+'loader.DataLoader' instead
+  warnings.warn(out)
+✅ Forward pass successful. Output shape: torch.Size([32, 6])
+✅ Loss computation successful. Loss: 1.9359
+'loader.DataLoader' instead
+  warnings.warn(out)
+'loader.DataLoader' instead
+'loader.DataLoader' instead
+  warnings.warn(out)
+✅ Forward pass successful. Output shape: torch.Size([32, 6])
+✅ Loss computation successful. Loss: 1.9359
+✅ Backward pass successful
+Epoch 1/5, Avg Loss: 1.7298
+Epoch 2/5, Avg Loss: 1.7118
+Epoch 3/5, Avg Loss: 1.7106
+Epoch 4/5, Avg Loss: 1.7089
+Epoch 5/5, Avg Loss: 1.7098
+✅ Basic model test accuracy: 0.2949
+✅ Basic functionality test PASSED
+
+=== DETECTING POTENTIAL NOISE PATTERNS ===
+Average prediction confidence: 0.294
+Confidence std deviation: 0.000
+Low confidence samples (< 0.294): 0
+
+Label distribution in low-confidence samples:
+
+Overall disagreement rate: 0.707
+⚠️  HIGH disagreement rate - possible noisy labels or difficult dataset
+
+✅ PHASE 1 COMPLETED SUCCESSFULLY
+📋 SUMMARY:
+   - Dataset size: 10152
+   - Classes: 6
+   - Potential noise detected: Yes
+   - Disagreement rate: 0.707
+📊 SPLIT SIZES:
+   Train: 10152
+   Val: 1128
+   Test: 2340
+
+==================================================
+ANALYZING DATASET B
+==================================================
+🚀 STARTING PHASE 1: FOUNDATION TESTING
+=== DATASET ANALYSIS ===
+Total graphs: 5040
+Number of classes: 6
+Node feature dimension: 1
+
+=== LABEL DISTRIBUTION ===
+Class 0: 842 samples (16.7%)
+Class 1: 890 samples (17.7%)
+Class 2: 608 samples (12.1%)
+Class 3: 830 samples (16.5%)
+Class 4: 1283 samples (25.5%)
+Class 5: 587 samples (11.6%)
+
+=== GRAPH STRUCTURE ===
+Average nodes per graph: 231.4
+Min nodes: 51, Max nodes: 300
+Std deviation: 93.0
+
+=== NODE FEATURES ===
+Feature range: [0.000, 0.000]
+Feature mean: 0.000
+Feature std: 0.000
+
+=== TESTING BASIC FUNCTIONALITY ===
+✅ Forward pass successful. Output shape: torch.Size([32, 6])
+✅ Loss computation successful. Loss: 2.1313
+✅ Backward pass successful
+Epoch 1/5, Avg Loss: 1.8035
+Epoch 2/5, Avg Loss: 1.7564
+Epoch 3/5, Avg Loss: 1.7549
+Epoch 4/5, Avg Loss: 1.7555
+Epoch 5/5, Avg Loss: 1.7551
+✅ Basic model test accuracy: 0.2361
+✅ Basic functionality test PASSED
+
+=== DETECTING POTENTIAL NOISE PATTERNS ===
+Average prediction confidence: 0.245
+Confidence std deviation: 0.000
+Low confidence samples (< 0.245): 0
+
+Label distribution in low-confidence samples:
+
+Overall disagreement rate: 0.745
+⚠️  HIGH disagreement rate - possible noisy labels or difficult dataset
+
+✅ PHASE 1 COMPLETED SUCCESSFULLY
+📋 SUMMARY:
+   - Dataset size: 5040
+   - Classes: 6
+   - Potential noise detected: Yes
+   - Disagreement rate: 0.745
+📊 SPLIT SIZES:
+   Train: 5040
+   Val: 560
+   Test: 1560
+
+==================================================
+ANALYZING DATASET C
+==================================================
+🚀 STARTING PHASE 1: FOUNDATION TESTING
+=== DATASET ANALYSIS ===
+Total graphs: 6912
+Number of classes: 6
+Node feature dimension: 1
+
+=== LABEL DISTRIBUTION ===
+Class 0: 360 samples (5.2%)
+Class 1: 1332 samples (19.3%)
+Class 2: 2822 samples (40.8%)
+Class 3: 720 samples (10.4%)
+Class 4: 1030 samples (14.9%)
+Class 5: 648 samples (9.4%)
+
+=== GRAPH STRUCTURE ===
+Average nodes per graph: 243.1
+Min nodes: 51, Max nodes: 300
+Std deviation: 85.6
+
+=== NODE FEATURES ===
+Feature range: [0.000, 0.000]
+Feature mean: 0.000
+Feature std: 0.000
+
+=== TESTING BASIC FUNCTIONALITY ===
+✅ Forward pass successful. Output shape: torch.Size([32, 6])
+✅ Loss computation successful. Loss: 1.9202
+✅ Backward pass successful
+Epoch 1/5, Avg Loss: 1.6120
+Epoch 2/5, Avg Loss: 1.5819
+Epoch 3/5, Avg Loss: 1.5811
+Epoch 4/5, Avg Loss: 1.5797
+Epoch 5/5, Avg Loss: 1.5811
+✅ Basic model test accuracy: 0.4064
+✅ Basic functionality test PASSED
+
+=== DETECTING POTENTIAL NOISE PATTERNS ===
+Average prediction confidence: 0.423
+Confidence std deviation: 0.000
+Low confidence samples (< 0.423): 275
+
+Label distribution in low-confidence samples:
+  Class 0: 2.2%
+  Class 1: 24.0%
+  Class 2: 40.7%
+  Class 3: 8.0%
+  Class 4: 14.9%
+  Class 5: 10.2%
+
+Overall disagreement rate: 0.592
+⚠️  HIGH disagreement rate - possible noisy labels or difficult dataset
+
+✅ PHASE 1 COMPLETED SUCCESSFULLY
+📋 SUMMARY:
+   - Dataset size: 6912
+   - Classes: 6
+   - Potential noise detected: Yes
+   - Disagreement rate: 0.592
+📊 SPLIT SIZES:
+   Train: 6912
+   Val: 768
+   Test: 1530
+
+==================================================
+ANALYZING DATASET D
+==================================================
+🚀 STARTING PHASE 1: FOUNDATION TESTING
+=== DATASET ANALYSIS ===
+Total graphs: 9252
+Number of classes: 6
+Node feature dimension: 1
+
+=== LABEL DISTRIBUTION ===
+Class 0: 2045 samples (22.1%)
+Class 1: 612 samples (6.6%)
+Class 2: 1692 samples (18.3%)
+Class 3: 1800 samples (19.5%)
+Class 4: 2527 samples (27.3%)
+Class 5: 576 samples (6.2%)
+
+=== GRAPH STRUCTURE ===
+Average nodes per graph: 242.1
+Min nodes: 52, Max nodes: 300
+Std deviation: 91.9
+
+=== NODE FEATURES ===
+Feature range: [0.000, 0.000]
+Feature mean: 0.000
+Feature std: 0.000
+
+=== TESTING BASIC FUNCTIONALITY ===
+✅ Forward pass successful. Output shape: torch.Size([32, 6])
+✅ Loss computation successful. Loss: 1.7625
+✅ Backward pass successful
+Epoch 1/5, Avg Loss: 1.7066
+Epoch 2/5, Avg Loss: 1.6712
+Epoch 3/5, Avg Loss: 1.6728
+Epoch 4/5, Avg Loss: 1.6701
+Epoch 5/5, Avg Loss: 1.6711
+✅ Basic model test accuracy: 0.2690
+✅ Basic functionality test PASSED
+
+=== DETECTING POTENTIAL NOISE PATTERNS ===
+Average prediction confidence: 0.259
+Confidence std deviation: 0.000
+Low confidence samples (< 0.259): 0
+
+Label distribution in low-confidence samples:
+
+Overall disagreement rate: 0.727
+⚠️  HIGH disagreement rate - possible noisy labels or difficult dataset
+
+✅ PHASE 1 COMPLETED SUCCESSFULLY
+📋 SUMMARY:
+   - Dataset size: 9252
+   - Classes: 6
+   - Potential noise detected: Yes
+   - Disagreement rate: 0.727
+📊 SPLIT SIZES:
+   Train: 9252
+   Val: 1028
+   Test: 2250
+(DeepTest) (.venv) 

@@ -1,4 +1,6 @@
 import torch
+import glob
+import os
 import torch.nn as nn
 import torch.nn.functional as F
 from torch_geometric.nn import GINConv, global_mean_pool
@@ -7,6 +9,34 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
 import seaborn as sns
+
+def load_datasets_from_folder(folder_path):
+    """Load all datasets from folder structure"""
+    datasets = {}
+
+    # find all datasets letters (A, B, C, D)
+    dataset_letters = set()
+    for file in os.listdir(folder_path):
+        if file.endswith('_train_graphs.pt'):
+            letter = file.split('_')[0]
+            dataset_letters.add(letter)
+
+    for letter in sorted(dataset_letters):
+        try:
+            train_data = torch.load(f'{folder_path}/{letter}_train_graphs.pt', weights_only=False)
+            val_data = torch.load(f'{folder_path}/{letter}_val_graphs.pt', weights_only=False)
+            test_data = torch.load(f'{folder_path}/{letter}_test_graphs.pt', weights_only=False)
+            
+            # Keep each dataset separate
+            datasets[letter] = {
+                'train': train_data,
+                'val': val_data, 
+                'test': test_data
+            }
+            print(f"✅ Loaded dataset {letter}: Train={len(train_data)}, Val={len(val_data)}, Test={len(test_data)}")
+        except Exception as e:
+            print(f"❌ Failed to load dataset {letter}: {e}")
+    return datasets
 
 class BasicGraphClassifier(nn.Module):
     """Simplified version for initial testing"""
@@ -35,6 +65,35 @@ class BasicGraphClassifier(nn.Module):
             graph_repr = h2.mean(dim=0, keepdim=True)
             
         return self.classifier(graph_repr)
+    
+def analyze_all_datasets(folder_path, device):
+    """Analyze each dataset separately"""
+    print("🚀 ANALYZING ALL DATASETS")
+    
+    datasets = load_datasets_from_folder(folder_path)
+    all_results = {}
+    
+    for letter, data in datasets.items():
+        print(f"\n{'='*50}")
+        print(f"ANALYZING DATASET {letter}")
+        print(f"{'='*50}")
+        
+        # Analyze train split (or combine train+val if needed)
+        dataset_to_analyze = data['train']  # Keep as list
+        
+        # Add required attributes
+        dataset_to_analyze.num_classes = 6
+        dataset_to_analyze.num_node_features = 1
+        
+        results = run_phase1_analysis(dataset_to_analyze, device)
+        all_results[letter] = results
+        
+        print(f"📊 SPLIT SIZES:")
+        print(f"   Train: {len(data['train'])}")
+        print(f"   Val: {len(data['val'])}")
+        print(f"   Test: {len(data['test'])}")
+    
+    return all_results
 
 class DatasetAnalyzer:
     """Tool for understanding your dataset characteristics"""
@@ -314,3 +373,8 @@ def run_phase1_analysis(dataset, device):
         'noise_analysis': noise_analysis,
         'ready_for_phase2': True
     }
+
+# At the end of datasetTesting.py
+folder_path = 'C:/Users/leosa/Documents/università/Sapienza/Deep Learning/progetto/DeepLearningChallenge/processed_data_separate'
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+results = analyze_all_datasets(folder_path, device)
