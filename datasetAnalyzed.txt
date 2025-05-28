@@ -293,6 +293,9 @@ Overall disagreement rate: 0.727
 SUGGESTIONS from fede
 dataset A:
 label noise 20%
+q = 0.5
+256 emb
+3 num layer
 
 dataset B: ==========
 label noise 40%
