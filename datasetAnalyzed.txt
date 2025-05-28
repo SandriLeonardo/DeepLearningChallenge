@@ -289,3 +289,15 @@ Overall disagreement rate: 0.727
    Val: 1028
    Test: 2250
 (DeepTest) (.venv) 
+
+SUGGESTIONS from fede
+dataset A:
+label noise 20%
+
+dataset B: ==========
+label noise 40%
+128 emb neurons
+q3  num layer
+q = 0.9
+edge dropping
+batch normalization e residui
