@@ -291,7 +291,7 @@ Overall disagreement rate: 0.727
 (DeepTest) (.venv) 
 
 SUGGESTIONS from fede
-dataset A:
+dataset A: ==========
 label noise 20%
 q = 0.5
 256 emb
@@ -304,3 +304,7 @@ q3  num layer
 q = 0.9
 edge dropping
 batch normalization e residui
+
+dataset C: ==========
+
+dataset D: ==========
